@@ -5,11 +5,15 @@
  */
 package ej14;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
+
 /**
  *
  * @author hinda
  */
-public class Frigorifico extends Electrodomestico implements Silencioso {
+public class Frigorifico extends Electrodomestico implements Silencioso,Comparable<Frigorifico>{
 
     //atributos
     private double capacidad;//capacidad en litros
@@ -43,5 +47,28 @@ public class Frigorifico extends Electrodomestico implements Silencioso {
     public void silencio() {
         System.out.println(" El Frigorifico de Modelo: "+this.getModelo()+" emite "+this.getConsumo());
     }
+    
+    //hashcode y equals
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Frigorifico)) return false;
+        if (!super.equals(o)) return false;
+        Frigorifico that = (Frigorifico) o;
+        return Double.compare(that.capacidad, capacidad) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), capacidad);
+    }
+
+    @Override
+    public int compareTo(Frigorifico o) {
+        return (int) ((this.capacidad)-(o.capacidad));
+    }
+
+  
 }

@@ -5,6 +5,8 @@
  */
 package ej14;
 
+import java.util.Objects;
+
 /**
  *
  * @author hinda
@@ -40,6 +42,35 @@ public abstract class Electrodomestico {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.consumo) ^ (Double.doubleToLongBits(this.consumo) >>> 32));
+        hash = 67 * hash + Objects.hashCode(this.modelo);
+        return hash;
+    }
+
+    //equals y haschcod
+    @Override    
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Electrodomestico other = (Electrodomestico) obj;
+        if (Double.doubleToLongBits(this.consumo) != Double.doubleToLongBits(other.consumo)) {
+            return false;
+        }
+        if (!Objects.equals(this.modelo, other.modelo)) {
+            return false;
+        }
+        return true;
+    }
 
     //ToString
     @Override
@@ -47,5 +78,6 @@ public abstract class Electrodomestico {
         return "Electrodomestico: " + "consumo=" + consumo + ", modelo=" + modelo +"\n";
     }
 
+    
     
 }

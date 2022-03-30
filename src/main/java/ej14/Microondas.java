@@ -5,11 +5,13 @@
  */
 package ej14;
 
+import java.util.Objects;
+
 /**
  *
  * @author hinda
  */
-public class Microondas extends Electrodomestico implements Silencioso {
+public class Microondas extends Electrodomestico implements Silencioso,Comparable<Microondas>{
     //Atributos
     private int potenciaMaxima;
     
@@ -43,6 +45,26 @@ public class Microondas extends Electrodomestico implements Silencioso {
     @Override
     public void silencio() {
         System.out.println("El microondas de consumo de "+this.getConsumo());
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Microondas)) return false;
+        if (!super.equals(o)) return false;
+        Microondas that = (Microondas) o;
+        return potenciaMaxima == that.potenciaMaxima;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), potenciaMaxima);
+    }
+
+    @Override
+    public int compareTo(Microondas o) {
+        return Integer.compare(potenciaMaxima, o.potenciaMaxima);
     }
     
 }
