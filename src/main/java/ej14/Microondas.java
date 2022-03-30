@@ -63,7 +63,7 @@ public class Microondas extends Electrodomestico implements Silencioso,Comparabl
     }
 
     @Override
-    public int compareTo(Microondas o) {
+    public int compareTo(Microondas o) {//no es obligatorio el equals y hashcode(con el comparTo puede hacer sort)
         return Integer.compare(potenciaMaxima, o.potenciaMaxima);
     }
     

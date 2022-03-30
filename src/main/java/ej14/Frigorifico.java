@@ -5,8 +5,6 @@
  */
 package ej14;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Objects;
 
 /**
@@ -45,7 +43,7 @@ public class Frigorifico extends Electrodomestico implements Silencioso,Comparab
 // deberá mostrar por consola que el frigorífico de modelo tal emite 50dB.
     @Override
     public void silencio() {
-        System.out.println(" El Frigorifico de Modelo: "+this.getModelo()+" emite "+this.getConsumo());
+        System.out.println(" El Frigorifico de Modelo: "+this.getModelo()+" emite 50");
     }
     
     //hashcode y equals

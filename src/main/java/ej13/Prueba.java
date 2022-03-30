@@ -6,6 +6,7 @@
 package ej13;
 
 import java.util.ArrayList;
+import javax.swing.plaf.metal.MetalIconFactory;
 
 /**
  *
@@ -21,12 +22,12 @@ public class Prueba {
         lista.add(new Estudiante(2, "Jack", "Lopez", "656887JM", new Direccion("Las Flores", "Estepona", 0, "España")));
         lista.add(new Estudiante(3, "Juana", "Perez", "875214BV", new Direccion("Cueta", "Malaga", 0, "España")));
         lista.add(new Estudiante(4, "Sam", "k", "58694HG", new Direccion("Rodrigez", "Cadiz", 0, "España")));
-        lista.add(new Profesor("Java", "Juan", "Vico", "56897MN", new Direccion("a", "a", 0, "españa")));
+        lista.add(new Profesor("Java", "Juan", "Vico", "56897MN", new Direccion("a", "a", 0, "españa")));//conversion implicita
         lista.add(new Profesor("Sistemas", "Carla", "Carla", "58467JN", new Direccion("b", "b", 0, "españa")));
         lista.add(new Profesor("Base de Datos", "Maria", "Mercedes", "45879OP", new Direccion("c", "c", 0, "españa")));
 
         for (Persona obj : lista) {
-            System.out.print("El Persona : ");
+            System.out.print("El Persona : "+obj);
             obj.identificate();//polimorfismo
         }
 
@@ -35,6 +36,7 @@ public class Prueba {
         //Usa el operador instanceof en cada iteración para mostrar la clase de cada uno de los objetos 
         //y llamar al método getID si es un Estudiante o llamar al método getEspecialidad si es un Profeso
         for (Persona obj : lista) {
+            System.out.println(obj.getClass());//te da la clase de la paquete
            if(obj instanceof Estudiante){
                System.out.println("Id es: "+((Estudiante) obj).getiDEstudiante());//coversion explicita
            }else if(obj instanceof Profesor){
